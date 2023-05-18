@@ -1,0 +1,119 @@
+.header {
+    margin-top: 10%;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 55px;
+    --tw-text-opacity: 1;
+    color: rgba(236,236,241,var(--tw-text-opacity));
+    font-weight: bold;
+}
+
+#roseFireButton {
+    display: block;
+    margin: 60px auto;
+    color: white;
+    background-color: #800000;
+    font-size: 1.1em;
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
+body {
+    background-color: #343541;
+    color: white;
+}
+
+#signOutButton {
+    color: white;
+    top: 20px;
+    position: fixed;
+    right: 20px;
+    z-index: 999;
+    cursor: pointer;
+}
+
+#signOutButton>i {
+    font-size: 30px;
+}
+
+#homeButton {
+    color: white;
+    top: 20px;
+    position: fixed;
+    left: 20px;
+    z-index: 999;
+    cursor: pointer;
+}
+
+#homeButton>i {
+    font-size: 30px;
+}
+
+#signOutButton:active {
+    transform: translateY(5px);
+}
+
+#homeButton:active {
+    transform: translateY(5px);
+}
+
+#myFile {
+    color: white;
+}
+
+.btn {
+    color: white;
+    background-color: #800000;
+    border-radius: 5px;
+}
+
+.btn:hover{
+    color: green;
+}
+
+#uploadSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    color: yellow;
+}
+
+#success {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    color: green;
+}
+
+#error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    color: red;
+}
+
+#outputContainer {
+    color: white;
+}
+
+#outputContainer h4{
+    --tw-text-opacity: 1;
+    color: rgba(236,236,241,var(--tw-text-opacity));
+    font-weight: bold;
+}
+
+#newFile {
+    display: block;
+    margin: 0 auto;
+    color: white;
+    background-color: #800000;
+}

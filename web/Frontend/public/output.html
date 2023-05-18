@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet" href="styles/bootstrap-material-design.min.css">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+    <link rel="preload" href="styles/main.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles/main.css"></noscript>
+    <title>Output!</title>
+  </head>
+  <body>
+    <div id="outputPage" class="container page-container">
+      <h2 class="header">Your Output</h3>
+      <button id="newFile" class="btn">Upload a new file</button>
+      <div id="indicator">Loading output...</div>
+      <div id="outputContainer" hidden>
+        <h4>Summary:</h4>
+        <div id="summary">This is just a test summary dolor ipsum dkokd oakd osekfos ekfo ksof seofk soek fosekf osekfoks eofk seokf ipsum dolor WDjwaijdaiwjd iajid jadf afj sfj sofij sdofij sdoifj sdifj sdiofj sdoijfsoidjfs iojdfs doij fsdoijf sdoijf sdoifj sdoifj sdiofj sodijf soij fsoijf soif jsdoifsj oisjf </div>
+        <br><br>
+        <h4>Transcription:</h4>
+        <div id="transcription">This is just a test summary dolor ipsum dkokd oakd osekfos ekfo ksof seofk soek fosekf osekfoks eofk seokf ipsum dolor WDjwaijdaiwjd iajid jadf afj sfj sofij sdofij sdoifj sdifj sdiofj sdoijfsoidjfs iojdfs doij fsdoijf sdoijf sdoifj sdoifj sdiofj sodijf soij fsoijf soif jsdoifsj oisjf </div>
+      </div>
+    </div>
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/popper.js"></script>
+    <script src="scripts/bootstrap-material-design.js"></script>
+    <script>$("body").bootstrapMaterialDesign();</script>
+    <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-analytics.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script src="scripts/rosefire.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-storage.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
