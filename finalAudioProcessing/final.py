@@ -21,44 +21,41 @@ blob = bucket.blob(top_file.name)
 blob.download_to_filename('test.mp3')
 
 import torch
-import torchaudio
-from transformers import Wav2Vec2ForCTC, Wav2Vec2Processor
-
-processor = Wav2Vec2Processor.from_pretrained("facebook/wav2vec2-base-960h")
-model = Wav2Vec2ForCTC.from_pretrained("facebook/wav2vec2-base-960h")
+import librosa
+from transformers import Wav2Vec2ForCTC, Wav2Vec2Tokenizer
 
 from pydub import AudioSegment
 AudioSegment.converter = "ffmpeg.exe"
-# sound = AudioSegment.from_mp3(os.path.join(current_directory, "test.mp3"))
 sound = AudioSegment.from_mp3("test.mp3")
 sound.export("test.wav", format="wav")
-# import speech_recognition as sr
-# r = sr.Recognizer()
-# with sr.WavFile("test.wav") as source:              # use "test.wav" as the audio source
-#     audio = r.record(source)                        # extract audio data from the file
 
-audio_file = 'test.wav'
-waveform, sample_rate = torchaudio.load(audio_file)
+audio, rate = librosa.load("test.wav", sr = 16000)
 
-# Remove extra dimension from waveform tensor if necessary
-if len(waveform.shape) > 1 and waveform.shape[1] == 2:
-    waveform = torch.mean(waveform, dim=1, keepdim=True)
+# Importing Wav2Vec pretrained model
 
-waveform = waveform.squeeze(0)
-resampler = torchaudio.transforms.Resample(sample_rate, 16000)
-waveform = resampler(waveform)
+tokenizer = Wav2Vec2Tokenizer.from_pretrained("facebook/wav2vec2-base-960h")
+model = Wav2Vec2ForCTC.from_pretrained("facebook/wav2vec2-base-960h")
 
-input_values = processor(waveform, sampling_rate=16000, return_tensors="pt").input_values
+# Taking an input value
 
-input_values = input_values.view(1, -1)
-with torch.no_grad():
-    logits = model(input_values).logits
+input_values = tokenizer(audio, return_tensors = "pt").input_values
 
-transcription = processor.decode(torch.argmax(logits, dim=-1)[0])
-print(transcription)
+# Storing logits (non-normalized prediction values)
+logits = model(input_values).logits
 
-with open('transcription.txt', 'w') as f:
+# Storing predicted ids
+prediction = torch.argmax(logits, dim = -1)
+
+# Passing the prediction to the tokenzer decode to get the transcription
+transcription = tokenizer.batch_decode(prediction)[0]
+
+# Open the file in write mode.
+with open("transcription.txt", "w") as f:
+
+    # Write the string to the file.
     f.write(transcription)
+
+print(transcription)
 
 # Import necessary libraries
 import nltk
