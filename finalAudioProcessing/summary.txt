@@ -1,1 +1,1 @@
-TEACHING MAGISTRATES THIRTY SECONDS MET HW TUTSIP ADVANTISE STICKING THUMB LIKE GOT DIS OPEN HAND TURN REDDECK CARDS IM FACE FACE LIKE MAGICA CHAKE FINALLY YOUCAN CARDLOOK LIKE ITSFLOADING THUMBS .
+Jonathan Rogers and Tenushbisual are working on a project to save users time by creating a tool to generate short summaries of lectures by condensing video and audio to their essential information. They use WaveTooth for speech recognition and GPT-3 for summarization. Pegasus GPT-2 and ProphetNet did not work for differing reasons.

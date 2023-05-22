@@ -58,32 +58,56 @@ with open("transcription.txt", "w") as f:
 print(transcription)
 
 # Import necessary libraries
-import nltk
-from nltk.tokenize import sent_tokenize
-from transformers import pipeline, set_seed
-import spacy
+# import nltk
+# from nltk.tokenize import sent_tokenize
+# from transformers import pipeline, set_seed
+# import spacy
 
-# Download required NLTK packages
-nltk.download('punkt')
+# # Download required NLTK packages
+# nltk.download('punkt')
 
-# Load a pre-trained English language model
-nlp = spacy.load('en_core_web_sm')
+# # Load a pre-trained English language model
+# nlp = spacy.load('en_core_web_sm')
 
 
-# Preprocess the input text by removing stop words and normalizing the text
-doc = nlp(transcription)
-processed_text = ' '.join([token.text for token in doc if not token.is_stop])
+# # Preprocess the input text by removing stop words and normalizing the text
+# doc = nlp(transcription)
+# processed_text = ' '.join([token.text for token in doc if not token.is_stop])
 
-from transformers import T5Tokenizer, T5ForConditionalGeneration
+# from transformers import T5Tokenizer, T5ForConditionalGeneration
 
-tokenizer = T5Tokenizer.from_pretrained("t5-base")
-model = T5ForConditionalGeneration.from_pretrained("t5-base")
+# tokenizer = T5Tokenizer.from_pretrained("t5-base")
+# model = T5ForConditionalGeneration.from_pretrained("t5-base")
 
-# Define the summarization model and generate a summary
-summarization_model = pipeline("summarization", model=model, tokenizer=tokenizer, framework="tf")
-summary = summarization_model(processed_text, max_length=100, min_length=30, do_sample=False)[0]['summary_text']
+# # Define the summarization model and generate a summary
+# summarization_model = pipeline("summarization", model=model, tokenizer=tokenizer, framework="tf")
+# summary = summarization_model(processed_text, max_length=100, min_length=30, do_sample=False)[0]['summary_text']
 
-# Print the summary
+# # Print the summary
+# print(summary)
+
+#Summarization 2
+key = "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"
+organization = "org-FcQrCwKM0FrbByEejc5yfqsj"
+import openai
+openai.organization = organization
+openai.api_key = key
+
+openai.Model.retrieve("gpt-3.5-turbo")
+
+prompt = transcription+";tldr" 
+
+#This is the API request with our prompr
+completion = openai.ChatCompletion.create(
+  model="gpt-3.5-turbo",
+  messages=[
+    {"role": "assistant", "content": "Sure, I will summarize what you give me, keeping in mind typos and I will just output the summary with no other words of my own. I will also make sure that the summaries will be more concise than the prompt."},
+    {"role": "user", "content": prompt},
+  ]
+)
+
+summary = completion.choices[0].message["content"]
+
 print(summary)
 
 with open('summary.txt', 'w') as f:
